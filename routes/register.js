@@ -6,7 +6,7 @@ const router = express.Router();
 // controller
 const register = require("../controller/register");
 
-router.post("/register", register.createUser);
+router.post("/register/user", register.createUser);
 
 router.get("/register", (req, res) => {
   res.render(path.join(__dirname, "../views", "register"));

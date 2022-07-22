@@ -78,12 +78,19 @@ io.on("connection", async (socket) => {
 
 const port = process.env.PORT || 3000;
 
-mongoose.connect(
-  `mongodb+srv://marcos:${process.env.DB_PASS}@cluster0.fe4kkjn.mongodb.net/chat?retryWrites=true&w=majority`,
-  () => {
-    console.log("Mongo connected.");
-    server.listen(port, () => {
-      console.log("Server runnin on port", port);
-    });
+async function connectDb() {
+  try {
+    await mongoose.connect(
+      `mongodb+srv://marcos:${process.env.DB_PASS}@cluster0.fe4kkjn.mongodb.net/chat?retryWrites=true&w=majority`,
+      () => {
+        console.log("Mongo connected.");
+        server.listen(port, () => {
+          console.log("Server runnin on port", port);
+        });
+      }
+    );
+  } catch (error) {
+    console.log(error);
   }
-);
+}
+connectDb();

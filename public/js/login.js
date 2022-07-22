@@ -1,6 +1,12 @@
 const loginForm = document.querySelector("#login-form");
 const submitButton = document.querySelector("#submit-btn");
 
+window.onload = () => {
+  alert(
+    "Hi!, there's a small error 'Internal Server Error' when you login the application. I'm still working on it, for now, just reload the page and it'll work. Thanks for visiting!"
+  );
+};
+
 async function loginUser(e) {
   e.preventDefault();
 

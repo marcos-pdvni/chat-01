@@ -3,7 +3,8 @@ const submitButton = document.querySelector("#submit-btn");
 
 window.onload = () => {
   alert(
-    "Hi!, there's a small error 'Internal Server Error' when you login the application. I'm still working on it, for now, just reload the page and it'll work. Thanks for visiting!"
+    "Hi!, there's a small error 'Internal Server Error' when you login the application. I'm still working on it, for now, just reload the page and it'll work. Thanks for visiting! \n" +
+      "Oi! Há um pequeno erro 'Internal Server Error' quando você loga na aplicação. Ainda estou trabalhando para consertar, por agora, apenas recarregue a página e irá funcionar. Obrigado por visitar!"
   );
 };
 

@@ -20,7 +20,7 @@ async function createAccount(e) {
 
   try {
     e.target[4].innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
-    const data = await axios.post("user", {
+    const data = await axios.post("register/user", {
       username: e.target[0].value,
       password: e.target[1].value,
       secret: e.target[2].value,

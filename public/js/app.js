@@ -35,17 +35,12 @@ async function createAccount(e) {
       window.location.href = "/";
     }, 1000);
   } catch (error) {
+    console.log(error);
     feedback.innerHTML = error.response.data.message;
     feedback.classList.remove("valid");
     feedback.classList.add("invalid");
     e.target[4].innerHTML = "Save";
   }
-}
-
-async function loginUser(e) {
-  e.preventDefault();
-
-  console.log(e.target);
 }
 
 eyeIcon.addEventListener("click", toggleEyeClass);

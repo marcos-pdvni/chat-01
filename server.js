@@ -21,9 +21,9 @@ app.set("view engine", "ejs");
 
 // routes
 const login = require("./routes/login");
-const register = require("./routes/register");
+
 const users = require("./routes/users");
-const reset = require("./routes/reset");
+
 const auth = require("./routes/auth");
 const application = require("./routes/application");
 const logout = require("./routes/logout");
@@ -31,9 +31,7 @@ const logout = require("./routes/logout");
 app.use(logout);
 app.use(application);
 app.use(auth);
-app.use(reset);
 app.use(users);
-app.use(register);
 app.use(login);
 
 app.use((req, res) => {

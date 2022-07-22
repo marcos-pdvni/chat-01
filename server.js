@@ -83,7 +83,7 @@ mongoose.connect(
   () => {
     console.log("Mongo connected.");
     server.listen(port, () => {
-      console.log("Server runnin on port", port);
+      console.log("Server running on port", port);
     });
   }
 );

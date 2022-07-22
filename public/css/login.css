@@ -9,9 +9,122 @@
 }
 body {
   background-color: var(--background);
-  color: var(--primary);
 }
-#submit {
+#form-title,
+#input-label {
+  color: var(--primary);
+  transition: all 0.25s ease-in-out;
+}
+
+#submit-btn {
   background-color: var(--primary);
   color: var(--background);
+}
+
+#form {
+  width: 100%;
+  color: var(--primary);
+}
+#reset-container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+#form-reset {
+  width: 100%;
+}
+#reset-submit {
+  background-color: var(--primary);
+  color: var(--background);
+  margin-top: 1rem;
+  transition: 0.25s ease-in-out all;
+}
+#reset-submit.valid {
+  background-color: #37ff8b;
+}
+#reset-submit.invalid {
+  background-color: red;
+}
+#save-btn {
+  background-color: var(--primary);
+  color: var(--background);
+}
+#submit-btn.valid {
+  background-color: #37ff8b;
+}
+#submit-btn.invalid {
+  background-color: red;
+}
+.eye {
+  position: relative;
+  bottom: 4.7rem;
+  left: 94%;
+  color: lightgray;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  width: 5px;
+  height: 5px;
+}
+.eye:hover {
+  color: var(--primary);
+}
+#answer.invalid {
+  border-color: red;
+}
+.eye.active {
+  color: var(--primary);
+}
+.feedback {
+  position: absolute;
+  top: 1rem;
+  border: 1px solid;
+  width: 25%;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 500;
+}
+[data-slide] {
+  transform: translateY(-5rem);
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+[data-slide].valid {
+  transform: translateY(0);
+  opacity: 1;
+  background-color: #37ff8b;
+  color: var(--background);
+}
+[data-slide].invalid {
+  transform: translateY(0);
+  opacity: 1;
+  background-color: red;
+  color: var(--background);
+}
+[data-reset] {
+  opacity: 0;
+  padding: 0.5rem 0;
+  transition: 0.25s ease-in-out;
+}
+[data-reset].invalid {
+  opacity: 1;
+  color: red;
+}
+[data-reset_form] {
+  opacity: 0;
+  transition: 0.25s ease-in-out all;
+}
+[data-reset_form].active {
+  opacity: 1;
+}
+
+@media screen and (min-width: 1024px) {
+  #form,
+  #reset-container {
+    width: 35%;
+  }
 }

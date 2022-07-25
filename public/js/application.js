@@ -7,11 +7,19 @@ const addImage = document.querySelector(".attachment");
 const imageInput = document.querySelector("#image");
 const hamburguer = document.querySelector(".hamburguer");
 
-socket.on("onlineUsers", (data) => {
+socket.emit("userJustConnected", {
+  userName,
+});
+
+socket.on("userConnected", (data) => {
+  renderConnectedUser(data);
+});
+
+socket.on("usersOnline", (data) => {
   usersOnline(data);
 });
 
-socket.on("dis-connect", (data) => {
+socket.on("userDisconnection", (data) => {
   usersOnline(data);
 });
 
@@ -35,8 +43,6 @@ messageForm.addEventListener("submit", (e) => {
     imageUrl: e.target[0].value ? e.target[0].value : null,
   });
 
-  renderMessage(userName, e.target[1].value, e.target[0].value);
-
   e.target[1].value = "";
   e.target[0].value = "";
 });
@@ -48,9 +54,19 @@ socket.on("prevMessages", (data) => {
 });
 
 function usersOnline(data) {
-  const el = document.querySelector(".users-online");
+  const el = document.querySelector(".users-con");
 
   el.textContent = data;
+}
+
+function renderConnectedUser(name) {
+  const div = document.createElement("div");
+
+  div.classList.add("other-active_bubble-connection");
+
+  div.innerHTML = `${name} just connected to the chat.`;
+
+  return messageBox.insertBefore(div, messageBox.children[0]);
 }
 
 function renderMessage(creator, message, imageUrl) {

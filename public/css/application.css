@@ -119,6 +119,18 @@ body {
   line-height: 1.5em;
   word-wrap: break-word;
 }
+
+.other-active_bubble-connection {
+  padding: 2%;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+  max-width: 50%;
+  width: fit-content;
+  margin-top: 1rem;
+  color: gray;
+  margin-right: auto;
+}
 .other-active_bubble {
   padding: 2%;
   border-top-left-radius: 1rem;

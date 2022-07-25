@@ -40,8 +40,19 @@ app.use((req, res) => {
   res.status(404).send("Page not found");
 });
 
+const connections = [];
+
 io.on("connection", async (socket) => {
   const allMessages = await Message.find();
+
+  socket.on("userJustConnected", (data) => {
+    console.log(data);
+    socket.broadcast.emit("userConnected", data.userName);
+  });
+
+  connections.push(socket.id);
+
+  io.sockets.emit("usersOnline", connections.length);
 
   socket.emit("prevMessages", allMessages);
 
@@ -63,7 +74,7 @@ io.on("connection", async (socket) => {
 
       await newMessage.save();
 
-      socket.broadcast.emit("newMessage", {
+      io.sockets.emit("newMessage", {
         creator: creator,
         message: message,
         imageUrl,
@@ -73,6 +84,11 @@ io.on("connection", async (socket) => {
     } catch (error) {
       console.log(error);
     }
+  });
+
+  socket.on("disconnect", () => {
+    connections.pop(connections.indexOf(socket.id));
+    io.sockets.emit("userDisconnection", connections.length);
   });
 });
 
